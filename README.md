@@ -12,4 +12,8 @@ npm start
 ```
 
 Lancer dans le navigateur 
-/init_create
+
+/api/init_create
+
+Avoir la photo de la ville 
+/api/city_path/:code

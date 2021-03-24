@@ -12,7 +12,7 @@ class ShowPhoto extends Component {
     }
 
     show_img = async e => {
-        let res = await axios.get("http://localhost:8080/api/city_path/" + e.target.value)
+        let res = await axios.get("http://localhost:8080/api/city/city_path/" + e.target.value)
         this.setState({ img: <img src={res.data} alt=""/> })
     }
 

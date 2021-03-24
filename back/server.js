@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
@@ -16,15 +18,9 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./app/models");
-db.sequelize.sync()
-/*db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.");
-});*/
-
-app.use(express.static('public'));
-
+/* db.sequelize.sync({ force: false }) */
 require("./app/routes/city.routes")(app);
+require("./app/routes/config.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

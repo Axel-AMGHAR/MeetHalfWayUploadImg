@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { createApi } from 'unsplash-js'
-
+import axios from "axios";
 import ImageGrid from './ImageGrid'
 
 const IMAGE_NUMBER = 10
 
 const SearchImage = () => {
-    const [searchValue, setSearchValue] = useState('lyon')
+    const [searchValue, setSearchValue] = useState('')
     const [images, setImages] = useState(undefined)
+    const [currentCityImgUrl, setCurrentCityImgUrl] = useState(undefined);
 
     const unsplash = createApi({
         accessKey: 'VleyzCT_-kQShHR-NsTdEe8mSpV7BUJL0uCG4FpHn6g',
@@ -27,10 +28,18 @@ const SearchImage = () => {
             setImages(data)
             setSearchValue('')
         })
+
+        axios.get('http://localhost:8080/api/city/city_path/'+ searchValue)
+            .then(response => setCurrentCityImgUrl(response.data))
+            .catch(err => console.log(err))
     }
 
     return (
         <>
+            <div>
+                <div>Image actuelle</div>
+                <img src={currentCityImgUrl} alt=""/>
+            </div>
             <input
                 type="text"
                 name="searchValue"

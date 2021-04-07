@@ -2,7 +2,7 @@ const db = require("../models/db.js");
 let City = db.cities;
 let CityPath = db.cities_path;
 const axios = require("axios").default;
-const capitalize = require('capitalize')
+const { Op } = require("sequelize");
 
 /** Update the city model var when the connection change */
 exports.update_db_cities = _ => {
@@ -25,13 +25,14 @@ const cityExist = async code => {
     if(!city){
         city = await City.findOne({
             where: {
-                name: capitalize(code)
+                name:{
+                    [Op.iLike]: code
+                }
             }
         });
     }
     return city;
 }
-
 
 const findCityPath = uid =>
     CityPath.findOne({

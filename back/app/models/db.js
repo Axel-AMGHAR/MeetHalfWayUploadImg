@@ -30,8 +30,8 @@ db.is_authenticated = async _ => {
     if(db.sequelize_instance === undefined)
         return false;
     else {
-        return await db.sequelize_instance.authenticate()
-            .then(_ =>  true).catch(_ => false)
+        return db.sequelize_instance.authenticate()
+            .then(_ => true).catch(_ => false)
     }
 }
 

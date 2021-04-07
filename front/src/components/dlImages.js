@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from "axios";
 import {SearchImages} from "./index";
 
 const DlImages = () => {
+
+    const [searchValue, setSearchValue] = useState('')
 
     const GiveImages = (images) => {
         const cl = e => console.log(e);
 
         var FR= new FileReader();
         FR.addEventListener("load", function(ev) {
-            axios.post('http://localhost:8080/api/city_update_local_path', {
+            axios.post('http://localhost:8080/api/city/city_update_local_path', {
                 base64_img_local: ev.target.result,
-                code: "Q6625"
+                code: 'code_empty'
             } ).then(data => console.log(data) )
                 .catch(err => console.log(err))
         });
@@ -39,7 +41,7 @@ const DlImages = () => {
     return  (
         <div>
             <h1>Search image from Unsplash</h1>
-            <SearchImages />
+            <SearchImages setSearchValue={setSearchValue} searchValue={searchValue}/>
             <div className="App-header">
 
                 <label>Search image from my files</label>

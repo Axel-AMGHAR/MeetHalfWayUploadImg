@@ -28,7 +28,7 @@ const ListCities = () => {
     return (
         <div>
             <div className='p-4 flex flex-col items-center'>
-                <label className='font-bold'>Rechercher une ville</label>
+                <label className='font-bold text-blue-500 text-2xl '>Rechercher une ville</label>
                 <input placeholder='nom de la ville' className='px-2 py-1 border-2 rounded-lg w-64 outline-none focus:border-blue-700' type="text" value={city} onChange={filterCity}/>
             </div>
             <table className='m-auto'>
@@ -42,21 +42,24 @@ const ListCities = () => {
                 <tbody>
                 {cities.map(city => {
                     let path = null;
-                    if(city.city_path === null){}
-                    else if(city.city_path.img_base64){
-                        let buf = new Buffer(city.city_path.img_base64, 'base64')
-                        path = buf.toString('ascii');
+                    if(city.city_path !== null){
+                        if(city.city_path.default === 'img_base64' ){
+                            let buf = new Buffer(city.city_path.img_base64, 'base64')
+                            path = buf.toString('ascii');
+                        } else{
+                           console.log( city.city_path[city.city_path.default])
+                           console.log(city.city_path.default)
+                            path = city.city_path[city.city_path.default];
+                        }
+
                     }
-                    else if(city.city_path.photo_path_unsplash)
-                        path = city.city_path.photo_path_unsplash
-                    else if(city.city_path.default_path)
-                        path = city.city_path.default_path
+                    console.log(path)
 
                     return (<tr>
-                        <td className='p-2 border-2'>{city.name}</td>
+                        <td className='p-2 border-2 font-bold text-center'>{city.name}</td>
                         <td className='p-6 border-b-2 flex justify-center'><img className='max-h-32' src={path} alt=""/></td>
-                        <td className='p-2 border-2'>
-                            <a href={'/city/'+ city.tags.wikidata + '/' + city.name}>
+                        <td className='p-2 border-2 text-center'>
+                            <a href={'/cities/detail/'+ city.tags.wikidata + '/' + city.name}>
                                 <i className='fa fa-edit fa-fw'/>
                             </a>
                         </td>

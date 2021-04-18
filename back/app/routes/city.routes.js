@@ -17,12 +17,12 @@ module.exports = app => {
 
     /* Update unsplash url link */
     router.post("/city_update_unsplash_path",
-        (req, res) => cities.updateImageValidation(req, res, { photo_path_unsplash: req.body.unsplash_url })
+        (req, res) => cities.updateImageValidation(req, res, { photo_path_unsplash: req.body.unsplash_url, default: 'photo_path_unsplash' })
     );
 
     /* Update local path */
     router.post("/city_update_local_path",
-        (req, res) => cities.updateImageValidation(req, res, { img_base64: req.body.img_base64 })
+        (req, res) => cities.updateImageValidation(req, res, { img_base64: req.body.img_base64, default: 'img_base64' })
     );
 
     router.all('/*', (req, res) => {

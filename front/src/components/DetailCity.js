@@ -44,7 +44,7 @@ const DetailCity = ()  => {
             <h1 className="text-blue-500 text-2xl text-center font-bold m-2"><i className="fas fa-city"></i> Ville : { city_name }</h1>
             <SearchImages cityName={city_name} wikicode={wiki_code}/>
             <div className="flex flex-col items-center mb-8">
-                <label className="text-blue-500 text-2xl text-center font-bold ">Chercher une image dans mes fichiers</label>
+                <label className="text-blue-500 text-2xl text-center font-bold "><i className="fas fa-file-upload"></i> Chercher une image dans mes fichiers</label>
                 <input className="m-4" onChange={(event)=> GiveImages(event.target.files)} type="file" id="id-file"/>
                 <div id="preview"></div>
             </div>

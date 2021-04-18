@@ -70,20 +70,21 @@ exports.getPath = async (req, res) => {
     const wiki_code = city.tags.wikidata
 
     let city_path = await findCityPath(city.uid)
-    if(city_path === null){
-        const response = await axios.get('https://www.wikidata.org/w/api.php?format=json&action=wbgetclaims&property=P18&entity='+ wiki_code)
+    if(city_path === null) {
+        const response = await axios.get('https://www.wikidata.org/w/api.php?format=json&action=wbgetclaims&property=P18&entity=' + wiki_code)
         city_path = await CityPath.create({
             default_path: `https://commons.wikimedia.org/wiki/Special:FilePath/${response.data.claims.P18[0].mainsnak.datavalue.value}?width=320 320w`,
-            mhwCityUid: city.uid
+            mhwCityUid: city.uid,
+            default: 'default_path'
         })
-    }else{
-        if(Boolean(city_path.img_base64))
-            return res.send(city_path.img_base64)
-
-        if(Boolean(city_path.photo_path_unsplash))
-            return res.send(city_path.photo_path_unsplash)
     }
-    return res.send(city_path.default_path);
+
+    return res.json({
+        default: city_path.default,
+        img_base64: city_path.img_base64,
+        photo_path_unsplash: city_path.photo_path_unsplash,
+        photo_path_wikimedia:  city_path.default_path
+    })
 };
 
 exports.findAll = async (req, res) => {

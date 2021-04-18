@@ -30,15 +30,15 @@ class App extends Component {
             <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
             <nav className="">
                 <ul className="flex justify-around">
-                    <li className='p-4'><Link to={'/list-cities'} className="nav-link p-4 hover:underline">Voir la liste des villes <i className='fa-fw fa fa-city'></i></Link></li>
+                    <li className='p-4'><Link to={'/cities/list'} className="nav-link p-4 hover:underline">Voir la liste des villes <i className='fa-fw fa fa-city'></i></Link></li>
                     <li className='p-4'><Link to={'/log-database'} className="nav-link p-4 hover:underline">Se connecter à la base <i className='fa-fw fa fa-sign-in-alt'></i></Link></li>
                 </ul>
             </nav>
             <hr />
             <Switch>
-                <Route path='/list-cities' component={ListCities}/>
+                <Route path='/cities/list' component={ListCities}/>
                 <Route path='/log-database' component={DatabaseLog}/>
-                <Route path='/city/:wiki_code/:city_name' component={DetailCity}/>
+                <Route path='/cities/detail/:wiki_code/:city_name' component={DetailCity}/>
             </Switch>
 
         </div>

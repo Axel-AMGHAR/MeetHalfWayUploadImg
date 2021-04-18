@@ -15,10 +15,10 @@ const ImageGrid = ({ images, wikicode }) => {
 
     return (
         <ul className="flex wrap">
-            {images.urls.map(item => {
+            {images.urls.map((item, n) => {
                 return (
-                    <li className="flex-grow" style={{height: '20vh'}}>
-                        <img className="max-h-full max-w-full align-bottom object-cover"  onClick={handleOnclick} src={item} alt={item} />
+                    <li key={n} className=" flex-grow" style={{height: '20vh'}}>
+                        <img className="opacity-100 hover:opacity-75 cursor-pointer rounded-md hover:cursor-pointer max-h-full max-w-full align-bottom object-cover"  onClick={handleOnclick} src={item} alt={item} />
                     </li>
                 )
             })}

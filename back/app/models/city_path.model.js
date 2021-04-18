@@ -8,5 +8,8 @@ module.exports = (sequelize, Sequelize) =>
         },
         img_base64: {
             type: Sequelize.BLOB
+        },
+        default: {
+            type: Sequelize.STRING
         }
     })

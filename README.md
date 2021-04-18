@@ -1,7 +1,5 @@
 # Documentation MeetHalway Upload image
 
-[TOC]
-
 ## Start project
 
 > [Télécharger](https://github.com/Axel-AMGHAR/MeetHalfWayUploadImg/blob/dev/MH_upload_img) le backup de BDD à la racine du projet 
@@ -49,12 +47,6 @@ npm start
 > local upload
 
 ![local](https://raw.githubusercontent.com/Axel-AMGHAR/MeetHalfWayUploadImg/dev/doc_images/detail_upload_local.png)
-
-## Navigation
-
-### [list cities](http://localhost:8081/cities/list)
-
-> Table of cities 
 
 ## Back-end
 

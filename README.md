@@ -2,7 +2,7 @@
 
 ## Start project
 
-> [Télécharger](https://github.com/Axel-AMGHAR/MeetHalfWayUploadImg/blob/dev/MH_upload_img) le backup de BDD à la racine du projet 
+> [Télécharger](https://github.com/Axel-AMGHAR/MeetHalfWayUploadImg/blob/dev/MH_upload_img.backup) le backup de BDD à la racine du projet 
 
 ### Launch project
 

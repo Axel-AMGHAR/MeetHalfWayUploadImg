@@ -11,7 +11,7 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+app.use(bodyParser({limit: '50mb'}));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 

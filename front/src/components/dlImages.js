@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import axios from "axios";
-import {SearchImages} from "./index";
+import SearchImages from "./dlImage/SearchImages";
 
 const DlImages = () => {
 

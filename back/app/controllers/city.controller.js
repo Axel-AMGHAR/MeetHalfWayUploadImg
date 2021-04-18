@@ -12,3 +12,8 @@ exports.updateImageValidation = (req, res, content) => {
 exports.getPath = async (req, res) => {
     return CityService.getPath(req, res)
 };
+
+/** Get all cities name with their paths */
+exports.getCities = async (req, res) => {
+    return CityService.findAll(req, res)
+};

@@ -7,12 +7,15 @@ module.exports = app => {
         if(!(await db.is_authenticated()))
             return res.status(400).send({status: false, err: 'Not authenticated'})
         next()
-    })
+    });
 
     /* get photo path */
     router.get("/city_path/:code", cities.getPath);
 
-    /* Update unspash url link */
+    /* get all cities */
+    router.get("/", cities.getCities);
+
+    /* Update unsplash url link */
     router.post("/city_update_unsplash_path",
         (req, res) => cities.updateImageValidation(req, res, { photo_path_unsplash: req.body.unsplash_url })
     );

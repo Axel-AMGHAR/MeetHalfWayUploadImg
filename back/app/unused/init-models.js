@@ -6,7 +6,6 @@ function initModels(sequelize) {
   var cities = _cities(sequelize, DataTypes);
   var mhw_city = _mhw_city(sequelize, DataTypes);
 
-
   return {
     cities,
     mhw_city,

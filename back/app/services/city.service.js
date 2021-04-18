@@ -85,3 +85,7 @@ exports.getPath = async (req, res) => {
     }
     return res.send(city_path.default_path);
 };
+
+exports.findAll = async (req, res) => {
+    return res.send(await City.findAll({include: [{ model: CityPath }]}));
+};

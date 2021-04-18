@@ -6,7 +6,8 @@ exports.update_bd = _ => {
 
     let Cities = require("../models/city.model.js")(db.sequelize_instance, Sequelize);
     let Cities_path = require("../models/city_path.model.js")(db.sequelize_instance, Sequelize);
-    Cities_path.belongsTo(Cities);
+    Cities_path.belongsTo(Cities, {foreignKey: 'mhwCityUid', targetKey: 'uid'});
+    Cities.hasOne(Cities_path);
 
     db.cities = Cities;
     db.cities_path = Cities_path;

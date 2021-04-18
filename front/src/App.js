@@ -1,10 +1,9 @@
-import './App.css';
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import ShowPhoto from './components/show_photo';
-import dlImages from './components/dlImages';
+import ListCities from './components/ListCities';
+import DetailCity from './components/DetailCity';
 import DatabaseLog from './components/DatabaseLog';
-import axios from "axios";
+import { Helmet } from 'react-helmet'
 
 class App extends Component {
 
@@ -23,19 +22,23 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <ul className="navbar-nav mr-auto">
-                    <li><Link to={'/admin'} className="nav-link">Choisir les images</Link></li>
-                    <li><Link to={'/show_photo'} className="nav-link">Voir les images</Link></li>
-                    <li><Link to={'/log_database'} className="nav-link">Se connecter à la base</Link></li>
+        <div className="App container m-auto">
+            <Helmet>
+                <script src="https://kit.fontawesome.com/9ce41bd472.js" crossOrigin="anonymous"></script>
+            </Helmet>
+
+            <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+            <nav className="">
+                <ul className="flex justify-around">
+                    <li className='p-4'><Link to={'/list-cities'} className="nav-link p-4 hover:underline">Voir la liste des villes <i className='fa-fw fa fa-city'></i></Link></li>
+                    <li className='p-4'><Link to={'/log-database'} className="nav-link p-4 hover:underline">Se connecter à la base <i className='fa-fw fa fa-sign-in-alt'></i></Link></li>
                 </ul>
             </nav>
             <hr />
             <Switch>
-                <Route exact path='/admin' component={dlImages}/>
-                <Route path='/show_photo' component={ShowPhoto}/>
-                <Route path='/log_database' component={DatabaseLog}/>
+                <Route path='/list-cities' component={ListCities}/>
+                <Route path='/log-database' component={DatabaseLog}/>
+                <Route path='/city/:wiki_code/:city_name' component={DetailCity}/>
             </Switch>
 
         </div>
